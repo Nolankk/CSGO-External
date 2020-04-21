@@ -5,6 +5,7 @@ using System.Media;
 using System.Text;
 using System.Threading;
 using System.Runtime.CompilerServices;
+using CSGO_External.Structs;
 
 namespace ReadWriteMemory
 {
@@ -335,6 +336,50 @@ namespace ReadWriteMemory
         public void WriteByte(string Module, int pOffset, byte pBytes)
         {
             this.WriteMem(this.DllImageAddress(Module) + pOffset, BitConverter.GetBytes((short)pBytes));
+        }
+
+        private static T ByteArrayToStructure<T>(byte[] bytes) where T : struct
+        {
+            var handle = GCHandle.Alloc(bytes, GCHandleType.Pinned);
+            try
+            {
+                return (T)Marshal.PtrToStructure(handle.AddrOfPinnedObject(), typeof(T));
+            }
+            finally
+            {
+                handle.Free();
+            }
+        }
+
+        public static float[] ConvertToFloatArray(byte[] bytes)
+        {
+            if (bytes.Length % 4 != 0)
+                throw new ArgumentException();
+
+            float[] floats = new float[bytes.Length / 4];
+
+            for (int i = 0; i < floats.Length; i++)
+                floats[i] = BitConverter.ToSingle(bytes, i * 4);
+
+            return floats;
+        }
+
+        public T ReadMemory<T>(int Adress) where T : struct
+        {
+            int ByteSize = Marshal.SizeOf(typeof(T)); // Get ByteSize Of DataType
+            byte[] buffer = new byte[ByteSize]; // Create A Buffer With Size Of ByteSize
+            ReadProcessMemory((int)this.processHandle, Adress, buffer, buffer.Length, 0); // Read Value From Memory
+
+            return ByteArrayToStructure<T>(buffer); // Transform the ByteArray to The Desired DataType
+        }
+
+        public float[] ReadMatrix<T>(int Adress, int MatrixSize) where T : struct
+        {
+            int ByteSize = Marshal.SizeOf(typeof(T));
+            byte[] buffer = new byte[ByteSize * MatrixSize]; // Create A Buffer With Size Of ByteSize * MatrixSize
+            ReadProcessMemory((int)this.processHandle, Adress, buffer, buffer.Length, 0);
+
+            return ConvertToFloatArray(buffer); // Transform the ByteArray to A Float Array (PseudoMatrix ;P)
         }
 
         public void WriteDouble(int pOffset, double pBytes)
