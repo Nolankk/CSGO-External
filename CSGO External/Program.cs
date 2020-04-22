@@ -35,6 +35,9 @@ namespace CSGO_External
 
             Thread Glow = new Thread(Visuals.startGlow);
             Glow.Start();
+
+            Thread Trigger = new Thread(TriggerBot.Start);
+            Trigger.Start();
         }
     }
 }

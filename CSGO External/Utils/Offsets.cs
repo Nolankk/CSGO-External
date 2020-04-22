@@ -20,5 +20,8 @@ namespace CSGO_External.Utils
         public static int m_vecMins = 0x0320;
         public static int m_vecMaxs = 0x032C;
         public static int dwViewMatrix = 0x4D353F4;
+        public static int m_iHealth = 0x100;
+        public static int m_iCrosshairId = 0xB3D4;
+        public static int dwForceAttack = 0x3175088;
     }
 }
