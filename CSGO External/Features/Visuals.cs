@@ -39,15 +39,15 @@ namespace CSGO_External.Render
 
                     GlowStruct Enemy = new GlowStruct()
                     {
-                        r = 1,
-                        g = 0,
-                        b = 0,
+                        r = 0,
+                        g = 0.5F,
+                        b = 1,
                     };
 
                     Program.Mem.WriteFloat(LocalPlayer.glowBase + (curGlowIndex * 0x38 + 0x4), Enemy.r);
                     Program.Mem.WriteFloat(LocalPlayer.glowBase + (curGlowIndex * 0x38 + 0x8), Enemy.g);
                     Program.Mem.WriteFloat(LocalPlayer.glowBase + (curGlowIndex * 0x38 + 0xC), Enemy.b);
-                    Program.Mem.WriteFloat(LocalPlayer.glowBase + (curGlowIndex * 0x38 + 0x10), 1.0f);
+                    Program.Mem.WriteFloat(LocalPlayer.glowBase + (curGlowIndex * 0x38 + 0x10), 0.8f);
                     Program.Mem.WriteByte(LocalPlayer.glowBase + (curGlowIndex * 0x38 + 0x24), 1);
                 }
                 Thread.Sleep(1);

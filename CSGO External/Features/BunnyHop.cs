@@ -22,8 +22,8 @@ namespace CSGO_External.Features
                 int delay = 0;
                 int count = 0;
 
-                // 257 is standing on the ground, and 263 is crouching on the ground.
-                if (Program.GetAsyncKeyState(32) > 0 && LocalPlayer.flags == 257 || LocalPlayer.flags == 263) //Program.GetAsyncKeyState(32) > 0
+                // 257 is standing on the ground
+                if (Program.GetAsyncKeyState(32) > 0 && LocalPlayer.flags == 257) //Program.GetAsyncKeyState(32) > 0
                 {
                     count++;
 
