@@ -49,20 +49,11 @@ namespace CSGO_External.Render
                     Program.Mem.WriteFloat(LocalPlayer.glowBase + (curGlowIndex * 0x38 + 0xC), Enemy.b);
                     Program.Mem.WriteFloat(LocalPlayer.glowBase + (curGlowIndex * 0x38 + 0x10), 0.8f);
                     Program.Mem.WriteByte(LocalPlayer.glowBase + (curGlowIndex * 0x38 + 0x24), 1);
+
+                    //RADAR
                     Program.Mem.WriteMemory<bool>(curEnt + Offsets.m_bSpotted, true);
                 }
                 Thread.Sleep(1);
-            }
-        }
-
-        public static void startRadar()
-        {
-            while (true)
-            {
-                for (var i = 0; i < 32; i++)
-                {
-
-                }
             }
         }
 
