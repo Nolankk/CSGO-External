@@ -23,7 +23,7 @@ namespace CSGO_External.Features
                 int count = 0;
 
                 // 257 is standing on the ground
-                if (Program.GetAsyncKeyState(32) > 0 && LocalPlayer.flags == 257) //Program.GetAsyncKeyState(32) > 0
+                if (Program.GetAsyncKeyState(32) > 0 && LocalPlayer.flags == 257 && LocalPlayer.mouseEnabled == 249) //Program.GetAsyncKeyState(32) > 0
                 {
                     count++;
 

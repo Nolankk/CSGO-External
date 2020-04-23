@@ -39,6 +39,9 @@ namespace CSGO_External.Utils
             public static int forceJump;
             public static int glowBase;
             public static int flags;
+            public static int velocity;
+            public static int mouseEnabled;
+            public static Vector3D viewAngles;
             public static QAngle m_angEyeAngles;
             public static Vector3D m_VecOrigin;
 

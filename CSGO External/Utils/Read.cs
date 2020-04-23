@@ -22,7 +22,10 @@ namespace CSGO_External.Utils
                 LocalPlayer.localTeam = Program.Mem.ReadInt(LocalPlayer.localBase + Offsets.m_iTeamNum);
                 LocalPlayer.forceJump = Offsets.baseClient + Offsets.dwForceJump;
                 LocalPlayer.flags = Program.Mem.ReadInt(LocalPlayer.localBase + Offsets.m_fFlags);
-                //Thread.Sleep(10);
+                LocalPlayer.viewAngles = Program.Mem.ReadMemory<Vector3D>(Offsets.baseEngine + Offsets.dwClientState_ViewAngles);
+                LocalPlayer.velocity = Program.Mem.ReadInt(LocalPlayer.localBase + Offsets.m_vecVelocity);
+                LocalPlayer.mouseEnabled = Program.Mem.ReadByte(Offsets.baseClient + Offsets.dwMouseEnable);
+                Thread.Sleep(10);
             }
         }   
     }

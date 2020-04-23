@@ -12,6 +12,7 @@ namespace CSGO_External.Utils
         public static int m_fFlags = 0x104;
         public static int dwForceJump = 0x51ED750;
         public static int baseClient = Program.Mem.DllImageAddress("client_panorama.dll");
+        public static int baseEngine = Program.Mem.DllImageAddress("engine.dll");
         public static int glowObject = 0x528B880;
         public static int m_iGlowIndex = 0xA428;
         public static int m_iTeamNum = 0xF4;
@@ -23,5 +24,9 @@ namespace CSGO_External.Utils
         public static int m_iHealth = 0x100;
         public static int m_iCrosshairId = 0xB3D4;
         public static int dwForceAttack = 0x3175088;
+        public static int dwClientState_ViewAngles = 0x4D88;
+        public static int m_vecVelocity = 0x114;
+        public static int dwMouseEnable = 0xD35728;
+        public static int m_bSpotted = 0x93D;
     }
 }

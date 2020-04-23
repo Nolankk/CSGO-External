@@ -373,6 +373,28 @@ namespace ReadWriteMemory
             return ByteArrayToStructure<T>(buffer); // Transform the ByteArray to The Desired DataType
         }
 
+        public static byte[] StructureToByteArray(object obj)
+        {
+            int len = Marshal.SizeOf(obj);
+
+            byte[] arr = new byte[len];
+
+            IntPtr ptr = Marshal.AllocHGlobal(len);
+
+            Marshal.StructureToPtr(obj, ptr, true);
+            Marshal.Copy(ptr, arr, 0, len);
+            Marshal.FreeHGlobal(ptr);
+
+            return arr;
+        }
+
+        public void WriteMemory<T>(int Adress, object Value)
+        {
+            byte[] buffer = StructureToByteArray(Value);
+
+            WriteProcessMemory((int)this.processHandle, Adress, buffer, buffer.Length, 0);
+        }
+
         public float[] ReadMatrix<T>(int Adress, int MatrixSize) where T : struct
         {
             int ByteSize = Marshal.SizeOf(typeof(T));
