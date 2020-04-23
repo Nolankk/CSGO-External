@@ -28,5 +28,6 @@ namespace CSGO_External.Utils
         public static int m_vecVelocity = 0x114;
         public static int dwMouseEnable = 0xD35728;
         public static int m_bSpotted = 0x93D;
+        public static int m_flFlashDuration = 0xA410;
     }
 }

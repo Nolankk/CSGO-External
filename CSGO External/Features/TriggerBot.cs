@@ -31,7 +31,7 @@ namespace CSGO_External.Features
                         Program.Mem.WriteInt(Offsets.baseClient + Offsets.dwForceAttack, 4);
                     }
                 }
-                Thread.Sleep(10);
+                Thread.Sleep(5);
             }
         }
     }

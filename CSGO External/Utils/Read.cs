@@ -25,6 +25,7 @@ namespace CSGO_External.Utils
                 LocalPlayer.viewAngles = Program.Mem.ReadMemory<Vector3D>(Offsets.baseEngine + Offsets.dwClientState_ViewAngles);
                 LocalPlayer.velocity = Program.Mem.ReadInt(LocalPlayer.localBase + Offsets.m_vecVelocity);
                 LocalPlayer.mouseEnabled = Program.Mem.ReadByte(Offsets.baseClient + Offsets.dwMouseEnable);
+                Program.Mem.WriteFloat(LocalPlayer.localBase + Offsets.m_flFlashDuration, 0.0F);
                 Thread.Sleep(10);
             }
         }   
